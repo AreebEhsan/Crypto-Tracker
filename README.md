@@ -21,10 +21,4 @@ Here's a walkthrough of implemented user stories:
 - **API**: [CryptoCompare API](https://min-api.cryptocompare.com/)
 - **Styling**: CSS (custom styles)
 
-## Installation and Setup
-
-To get a local copy up and running, follow these steps:
-
-### Prerequisites
-- **Node.js**: Ensure that you have Node.js installed. [Download Node.js here](https://nodejs.org/).
 
