@@ -9,9 +9,11 @@ Crypto-Tracker is a React-based web application that allows users to track real-
 - View real-time prices and coin logos.
 - Responsive design for desktop and mobile screens.
 
-## Demo
+## Video Walkthrough
 
-![Crypto-Tracker Screenshot](link-to-screenshot-or-gif)
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/AreebEhsan/Catventure/blob/main/Catventure%20Demo.gif](https://github.com/AreebEhsan/Crypto-Tracker' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Tech Stack
 
