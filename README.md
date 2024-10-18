@@ -13,7 +13,7 @@ Crypto-Tracker is a React-based web application that allows users to track real-
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/AreebEhsan/Crypto-Tracker' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/AreebEhsan/Crypto-Tracker/blob/main/Crypto-Tracker%20Demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Tech Stack
 
