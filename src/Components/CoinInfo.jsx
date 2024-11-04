@@ -1,4 +1,7 @@
+// src/Components/CoinInfo.jsx
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 const CoinInfo = ({ image, name, symbol }) => {
@@ -8,16 +11,17 @@ const CoinInfo = ({ image, name, symbol }) => {
     const getCoinPrice = async () => {
       try {
         const response = await fetch(
-          `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=USD&api_key=` + API_KEY
+          `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=USD&api_key=${API_KEY}`
         );
+        if (!response.ok) throw new Error("Failed to fetch data");
         const json = await response.json();
         setPrice(json);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching coin price:", error);
       }
     };
 
-    getCoinPrice().catch(console.error);
+    getCoinPrice();
   }, [symbol]);
 
   return (
@@ -27,11 +31,15 @@ const CoinInfo = ({ image, name, symbol }) => {
           <img
             className="icons"
             src={`https://www.cryptocompare.com${image}`}
-            alt={`Small icon for ${name} crypto coin`}
+            alt={`Icon for ${name} crypto coin`}
           />
-          {name} <span className="tab"></span> ${price.USD} USD
+          <Link style={{ color: "white" }} to={`/coinDetails/${symbol}`}>
+            {name} <span className="tab"></span> ${price.USD || "N/A"} USD
+          </Link>
         </li>
-      ) : null}
+      ) : (
+        <p></p> // Display "Loading..." text when data is loading
+      )}
     </div>
   );
 };

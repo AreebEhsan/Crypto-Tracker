@@ -8,6 +8,7 @@ body {
   justify-content: center;      /* Centers the container horizontally */
   align-items: center;          /* Centers the container vertically */
   min-height: 100vh;            /* Full viewport height for vertical centering */
+  color: white;                 /* Ensure text defaults to white */
 }
 
 /* The content container (keeping .whole-page) */
@@ -50,4 +51,31 @@ input[type="text"] {
   margin-bottom: 20px;
   width: 300px;                  /* Set a width for the search bar */
   text-align: center;            /* Center placeholder text */
+  border: none;                  /* Optional for a cleaner look */
+  border-radius: 5px;            /* Optional rounded corners */
+}
+
+/* Navigation styling for Home button */
+nav {
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+  background: #1d1f1d;
+  padding: 10px;
+  border-radius: 0 0 5px 5px;
+}
+
+.home-link {
+  border: 1px dotted white;
+  background: #1d1f1d;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.home-link:hover {
+  background: white;
+  color: black;
 }
