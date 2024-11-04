@@ -1,12 +1,33 @@
-<<<<<<< HEAD
-# React + Vite
+# Cryptocurrency Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Cryptocurrency Tracker Screenshot](https://link-to-your-screenshot.com) <!-- Replace with an actual screenshot link -->
 
-Currently, two official plugins are available:
+A React-based cryptocurrency tracking web application that allows users to view the latest information and detailed statistics about various cryptocurrencies. This app fetches real-time data using the CryptoCompare API and provides historical data visualization using Recharts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# Crypto-Tracker
->>>>>>> 8c7bb436249409013512ba3fabf5259b84015ff1
+## Features
+
+- View a list of cryptocurrencies with current prices
+- Search for specific cryptocurrencies by name or symbol
+- Detailed view of each cryptocurrency with information such as:
+  - Market Cap
+  - Volume
+  - Today's high, low, and open prices
+  - Historical price data for the last 30 days
+- Real-time updates and loading animations for better UX
+
+## Technologies Used
+
+- **Frontend**: React, React Router, SCSS
+- **Data Visualization**: Recharts
+- **API**: [CryptoCompare API](https://www.cryptocompare.com/)
+- **Hosting**: Hosted on [Hostinger] <!-- Update based on where you've hosted it -->
+
+## Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+- Node.js and npm installed on your machine
+- A CryptoCompare API key (you can get one by registering on the [CryptoCompare website](https://www.cryptocompare.com/))
+
