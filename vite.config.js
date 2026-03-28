@@ -2,7 +2,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: "/Cryptocurrency-Tracker/", // Ensure this matches your actual deployment path
-});
+  // Use root path for local dev and repo subpath for production deployment.
+  base: command === "serve" ? "/" : "/Cryptocurrency-Tracker/",
+}));

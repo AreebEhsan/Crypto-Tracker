@@ -1,16 +1,14 @@
 // routes/NotFound.jsx
-import { Link } from "react-router-dom";
+import { Button, Stack, Text } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 
-const NotFound = () => {
+export default function NotFound() {
+  const navigate = useNavigate();
   return (
-    <main style={{ padding: "1rem", textAlign: "center" }}>
-      <h2>Page Not Found</h2>
-      <p>There's nothing here!</p>
-      <Link style={{ color: "white" }} to="/">
-        Back to Home
-      </Link>
-    </main>
+    <Stack align="center" mt="xl">
+      <Text fw={800} size="xl">Page not found</Text>
+      <Text c="dimmed">The page you are looking for doesn&apos;t exist.</Text>
+      <Button onClick={() => navigate('/')}>Back to dashboard</Button>
+    </Stack>
   );
-};
-
-export default NotFound;
+}

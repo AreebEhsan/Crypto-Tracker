@@ -1,78 +1,52 @@
-import { useState, useEffect } from 'react';
-import './App.css';
-import CoinInfo from "./Components/CoinInfo";
+import { Stack, Grid, Group, Loader, Text, Alert, Button } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
+import { useTopCoins, useMarketNews } from './hooks/useCryptoData';
+import { useWatchlist } from './hooks/useWatchlist';
+import AppShellLayout from './components/layout/AppShellLayout';
+import OverviewCards from './components/dashboard/OverviewCards';
+import TopMovers from './components/dashboard/TopMovers';
+import CoinTable from './components/table/CoinTable';
+import NewsGrid from './components/news/NewsGrid';
 
-const API_KEY = import.meta.env.VITE_APP_API_KEY;
+function HomePage() {
+  const { data: coins = [], isLoading, isError, refetch } = useTopCoins(60);
+  const { data: news = [] } = useMarketNews(8);
+  const { watchlist, toggleWatch } = useWatchlist();
+  const navigate = useNavigate();
 
-function App() {
-  const [list, setList] = useState(null);
-  const [filteredResults, setFilteredResults] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+  if (isError) {
+    return (
+      <Alert color="red" title="Data error">
+        Could not load market data. Please check your API key and try again.
+        <Button mt="sm" onClick={() => refetch()}>Retry</Button>
+      </Alert>
+    );
+  }
 
-  useEffect(() => {
-    const fetchAllCoinData = async () => {
-      try {
-        const response = await fetch(
-          "https://min-api.cryptocompare.com/data/all/coinlist?&api_key=" + API_KEY
-        );
-        const json = await response.json();
-        setList(json);
-        setFilteredResults(Object.keys(json.Data)); // Initialize filtered results with all coins
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchAllCoinData();
-  }, []);
-
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    
-    if (searchValue !== "") {
-      const filteredData = Object.keys(list.Data).filter((item) =>
-        list.Data[item].FullName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        list.Data[item].Symbol.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      setFilteredResults(filteredData);
-    } else {
-      setFilteredResults(Object.keys(list.Data));
-    }
-  };
+  const onSearchSelect = (symbol) => navigate(`/coin/${symbol}`);
 
   return (
-    <div className="whole-page">
-      <h1>My Crypto List</h1>
-      <input
-        type="text"
-        placeholder="Search..."
-        onChange={(inputString) => searchItems(inputString.target.value)}
-      />
-      <ul>
-        {searchInput.length > 0
-          ? filteredResults.map((coin) =>
-              list.Data[coin].PlatformType === "blockchain" ? (
-                <CoinInfo
-                  key={list.Data[coin].Symbol}
-                  image={list.Data[coin].ImageUrl}
-                  name={list.Data[coin].FullName}
-                  symbol={list.Data[coin].Symbol}
-                />
-              ) : null
-            )
-          : list &&
-            Object.entries(list.Data).map(([coin]) =>
-              list.Data[coin].PlatformType === "blockchain" ? (
-                <CoinInfo
-                  key={list.Data[coin].Symbol}
-                  image={list.Data[coin].ImageUrl}
-                  name={list.Data[coin].FullName}
-                  symbol={list.Data[coin].Symbol}
-                />
-              ) : null
-            )}
-      </ul>
-    </div>
+    <AppShellLayout onSearch={onSearchSelect} searchData={coins}>
+      <Stack gap="lg">
+        <OverviewCards coins={coins} loading={isLoading} />
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 5 }}>
+            <TopMovers coins={coins} />
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, md: 7 }}>
+            <CoinTable coins={coins} watchlist={watchlist} toggleWatch={toggleWatch} loading={isLoading} />
+          </Grid.Col>
+        </Grid>
+        <div>
+          <Group mb="xs" justify="space-between">
+            <Text fw={700}>Market News</Text>
+            <Text c="dimmed" size="sm">Powered by CryptoCompare</Text>
+          </Group>
+          {isLoading ? <Loader /> : <NewsGrid articles={news} />}
+        </div>
+      </Stack>
+    </AppShellLayout>
   );
 }
 
-export default App;
+export default HomePage;
