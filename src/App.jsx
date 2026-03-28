@@ -2,11 +2,11 @@ import { Stack, Grid, Group, Loader, Text, Alert, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useTopCoins, useMarketNews } from './hooks/useCryptoData';
 import { useWatchlist } from './hooks/useWatchlist';
-import AppShellLayout from './components/layout/AppShellLayout';
-import OverviewCards from './components/dashboard/OverviewCards';
-import TopMovers from './components/dashboard/TopMovers';
-import CoinTable from './components/table/CoinTable';
-import NewsGrid from './components/news/NewsGrid';
+import AppShellLayout from './Components/layout/AppShellLayout';
+import OverviewCards from './Components/dashboard/OverviewCards';
+import TopMovers from './Components/dashboard/TopMovers';
+import CoinTable from './Components/table/CoinTable';
+import NewsGrid from './Components/news/NewsGrid';
 
 function HomePage() {
   const { data: coins = [], isLoading, isError, refetch } = useTopCoins(60);

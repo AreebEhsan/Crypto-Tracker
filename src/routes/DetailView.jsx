@@ -3,8 +3,8 @@ import { Card, Grid, Group, Stack, Text, Badge, Button, Loader, Alert } from '@m
 import { IconArrowLeft, IconExternalLink } from '@tabler/icons-react';
 import { useCoinData } from '../hooks/useCryptoData';
 import { useWatchlist } from '../hooks/useWatchlist';
-import AppShellLayout from '../components/layout/AppShellLayout';
-import PriceHistoryChart from '../components/charts/PriceHistoryChart';
+import AppShellLayout from '../Components/layout/AppShellLayout';
+import PriceHistoryChart from '../Components/charts/PriceHistoryChart';
 import { formatNumber, formatPercent } from '../utils/format';
 
 export default function DetailView() {
