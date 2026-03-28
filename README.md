@@ -1,33 +1,65 @@
-# Cryptocurrency Tracker
+# Nova Crypto Desk
 
-![Cryptocurrency Tracker Screenshot](https://link-to-your-screenshot.com) <!-- Replace with an actual screenshot link -->
+Modern React + Vite dashboard for tracking crypto markets with Mantine UI, Recharts charts, and TanStack Query data fetching.
 
-A React-based cryptocurrency tracking web application that allows users to view the latest information and detailed statistics about various cryptocurrencies. This app fetches real-time data using the CryptoCompare API and provides historical data visualization using Recharts.
+![Screenshot placeholder](https://dummyimage.com/1280x720/0f172a/ffffff&text=Add+screenshot)
 
 ## Features
+- Market overview with top coins, watchlist toggle, and movers
+- Detail view with price history chart, metadata, and quick website link
+- Market news feed (CryptoCompare)
+- Theme toggle, responsive layout, and client-side routing
 
-- View a list of cryptocurrencies with current prices
-- Search for specific cryptocurrencies by name or symbol
-- Detailed view of each cryptocurrency with information such as:
-  - Market Cap
-  - Volume
-  - Today's high, low, and open prices
-  - Historical price data for the last 30 days
-- Real-time updates and loading animations for better UX
+## Tech stack
+- Vite 5, React 18, React Router 6
+- Mantine 8 (UI), Recharts (charts)
+- TanStack Query 5 for data caching/fetching
+- CryptoCompare REST API
 
-## Technologies Used
+## Requirements
+- Node 20.x (enforced via `package.json` engines)
+- npm (lockfile: `package-lock.json`)
+- CryptoCompare API key
 
-- **Frontend**: React, React Router, SCSS
-- **Data Visualization**: Recharts
-- **API**: [CryptoCompare API](https://www.cryptocompare.com/)
-- **Hosting**: Hosted on [Hostinger] <!-- Update based on where you've hosted it -->
+## Quick start
+```bash
+npm install
+npm run dev
+```
+The app runs at http://localhost:5173 by default.
 
-## Getting Started
+## Environment variables
+Create a `.env` file (not committed) with:
+```
+VITE_APP_API_KEY=your_cryptocompare_api_key
+```
+`VITE_` prefix means this value is bundled to the client—treat it as public. For stronger secrecy, proxy requests through a backend.
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+## Scripts
+- `npm run dev` — start Vite dev server
+- `npm run build` — production build
+- `npm run preview` — preview the production build locally
+- `npm run lint` — run ESLint
 
-### Prerequisites
+## Deployment (Vercel)
+- Framework preset: **Vite**
+- Build command: `npm run build`
+- Output directory: `dist`
+- Set environment variable `VITE_APP_API_KEY`
+- Node version: 20.x (respects `engines.node`)
 
-- Node.js and npm installed on your machine
-- A CryptoCompare API key (you can get one by registering on the [CryptoCompare website](https://www.cryptocompare.com/))
+## Project structure
+```
+src/
+  api/          // CryptoCompare API helpers
+  Components/   // UI components (capitalized; case-sensitive in prod)
+  hooks/        // React Query hooks & watchlist
+  routes/       // Route components
+  utils/        // Formatting helpers
+  main.jsx      // App entry with routing + providers
+  App.jsx       // Home dashboard
+```
 
+## Notes
+- Case-sensitive imports matter in deployment (folder is `Components`, not `components`).
+- Bundles are currently large; consider code-splitting if size warnings become an issue.
