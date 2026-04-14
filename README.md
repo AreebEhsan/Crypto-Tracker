@@ -1,4 +1,4 @@
-# Nova Crypto Desk
+# Cryptocurrency Tracker Dashboard
 
 Modern React + Vite dashboard for tracking crypto markets with Mantine UI, Recharts charts, and TanStack Query data fetching.
 
